@@ -1,4 +1,6 @@
 // part 2 linking it all together
+// var logic = require("./logic");
+
 // The function here is called an iife,
 // it keeps everything inside hidden from the rest of our application
 (function() {
@@ -16,7 +18,7 @@
   var createTodoNode = function(todo) {
     var todoNode = document.createElement("li");
     // you will need to use addEventListener
-    var description = document.createElement("SPAN");
+    var description = document.createElement("span");
     // add span holding description
 
     // this adds the delete button
@@ -28,6 +30,7 @@
     todoNode.appendChild(deleteButtonNode);
 
     // add markTodo button
+    var markTodoButtonNode = document.createElement("button");
 
     // add classes for css
 
@@ -41,11 +44,12 @@
 
       // what is inside event.target?
 
-      var description = "?";
-
+      var description = document.getElementById("text-box").value;
+      console.log(description);
       // hint: todoFunctions.addTodo
-      var newState = []; // ?? change this!
-      update(newState);
+      var newState = todoFunctions.addTodo(todos, newTodo); // ?? change this!
+      renderState(newState);
+      console.log("this works");
     });
   }
 

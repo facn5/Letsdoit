@@ -32,15 +32,17 @@ var todoFunctions = {
     newtodos = JSON.parse(JSON.stringify(todos));
     newid = todoFunctions.generateId();
     newTodo.id = newid;
-
+    newTodo.description = document.getElementById("text-box").value;
+    console.log(newTodo.description);
     //  var newarr = Object.keys(newTodo).map(function(key) {
     //    return [Number(key), newTodo[key]];
     //  });
     //    var newKey = { newid };
     //  newKey.description = " description";
-    //  var newKey = Object.assign(newid, description);//
+    //  var newKey = Object.assign(newid, descripstion);//
     newtodos.concat(newTodo);
     return newtodos.concat(newTodo);
+    console.log(newtodos.concat(newTodo));
   },
   deleteTodo: function(todos, idToDelete) {
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
@@ -54,10 +56,11 @@ var todoFunctions = {
     //    newtodos.splice(i, 1);
     //  }
     //    }
+
     var sliced = Array.prototype.slice.call(newtodos, idToDelete);
 
     //  console.log(newtodos);
-    console.log(sliced);
+    return sliced;
   },
   markTodo: function(todos, idToMark) {
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
@@ -88,7 +91,6 @@ var todoFunctions = {
 if (typeof module !== "undefined") {
   module.exports = todoFunctions;
 }
-console.log("the file is connected");
 
 todoFunctions.addTodo(
   [
@@ -96,5 +98,5 @@ todoFunctions.addTodo(
     { id: -2, description: "second todo", done: false },
     { id: -1, description: "third todo", done: false }
   ],
-  { id: 0, description: "fourth todo", done: false }
+  { id: 0, description: "4th todo", done: true }
 );
