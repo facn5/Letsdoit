@@ -1,16 +1,16 @@
 var test = require("tape");
 var logic = require("./logic");
 
-test("the length of addtodo after the a", function(t) {
-  var actual = todoFunctions.addTodo(
+test("the length of addtodo after the add", function(t) {
+  var actual = logic.addTodo(
     [
       { id: -3, description: "first todo", done: false },
       { id: -2, description: "second todo", done: false },
       { id: -1, description: "third todo", done: false }
     ],
     { id: 0, description: "fourth todo", done: false }
-  ).length;
-
+  );
+  actual = actual.length;
   var expected = 4;
   t.equal(actual, expected, "Should make the first function work");
   t.end();

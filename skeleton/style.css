@@ -1,0 +1,15 @@
+body {
+  background: url(http://www.inggez.com/img/bg-pattern.png),
+    linear-gradient(to left, #00a88f, #0d2042);
+  text-align: center;
+}
+
+#todocontainer {
+  align-items: center;
+}
+form {
+  display: inline-block;
+}
+ul {
+  display: inline-block;
+}

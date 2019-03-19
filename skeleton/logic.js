@@ -40,7 +40,7 @@ var todoFunctions = {
     //  newKey.description = " description";
     //  var newKey = Object.assign(newid, description);//
     newtodos.concat(newTodo);
-    console.log(newtodos.concat(newTodo));
+    return newtodos.concat(newTodo);
   },
   deleteTodo: function(todos, idToDelete) {
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
