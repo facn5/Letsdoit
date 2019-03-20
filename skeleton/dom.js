@@ -47,13 +47,19 @@
       ).value;
 
       console.log(document.getElementById("text-box").value);
+      var newid = todoFunctions.generateId();
+      lettodoObj.id = newid;
       lettodoObj.description = document.getElementById("text-box").value;
       //var y = (document.getElementsByTagName("span").textContent = x);
+      var newid = todoFunctions.generateId();
+      lettodoObj.id = newid;
+      lettodoObj.done = false;
 
       // hint: todoFunctions.addTodo
       state = todoFunctions.addTodo(state, lettodoObj); // ?? change this!
       renderState(state);
       console.log("this works");
+      console.log(state);
     });
   }
 

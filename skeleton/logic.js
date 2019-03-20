@@ -29,6 +29,7 @@ var todoFunctions = {
     var newTodos = todoFunctions.cloneArrayOfObjects(todos);
     var newid = todoFunctions.generateId();
     newTodos.id = newid;
+    newTodos.done = false;
     return newTodos.concat(newTodo);
   },
   deleteTodo: function(todos, idToDelete) {

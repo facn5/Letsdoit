@@ -3,7 +3,15 @@ body {
     linear-gradient(to left, #00a88f, #0d2042);
   text-align: center;
 }
-
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga", "kern";
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  background: linear-gradient(210deg, lighten(#4fc08d, 20%), #4fc08d);
+}
 #todocontainer {
   align-items: center;
 }
@@ -18,16 +26,24 @@ todo-container {
 }
 input[type="button"],
 input[type="submit"] {
-  background-color: #4caf50;
-  border: none;
-  color: white;
-  padding: 5px 8px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+  font-size: 14px;
+  margin: 0 0.5em;
+  border-radius: 2em;
+  padding: 0.75em 1.5em;
   cursor: pointer;
+  background: none;
+  color: darken($color-main, 20%);
+  border: 1px solid;
+  letter-spacing: 1px;
+  font-family: $font-family;
+  color: #4fc08d;
+  border: $color-main 1px solid;
+  transition: 250ms ease-out;
+  &:hover,
+  &:focus {
+    color: #fff;
+    background: $color-main;
+  }
 }
 input[type="text"] {
   border: 2px solid #00a88f;
