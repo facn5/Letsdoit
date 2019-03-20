@@ -7,11 +7,7 @@
   var container = document.getElementById("todo-container");
   var addTodoForm = document.getElementById("add-todo");
 
-  var state = [
-    { id: -3, description: "first todo", done: false },
-    { id: -2, description: "second todo", done: false },
-    { id: -1, description: "third todo", done: false }
-  ]; // this is our initial todoList
+  var state = []; // this is our initial todoList
 
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
@@ -21,7 +17,6 @@
     // add span holding description
     // this adds the delete button
     var deleteButtonNode = document.createElement("button");
-    var description = document.createElement("span");
     deleteButtonNode.addEventListener("click", function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
@@ -30,6 +25,7 @@
     todoNode.appendChild(description);
 
     deleteButtonNode.className = "fas fa-trash-alt";
+    description.innerText = todo.description;
 
     // add markTodo button
     var markTodoButtonNode = document.createElement("button");
@@ -55,8 +51,8 @@
       //var y = (document.getElementsByTagName("span").textContent = x);
 
       // hint: todoFunctions.addTodo
-      var newState = todoFunctions.addTodo(state, lettodoObj); // ?? change this!
-      renderState(newState);
+      state = todoFunctions.addTodo(state, lettodoObj); // ?? change this!
+      renderState(state);
       console.log("this works");
     });
   }
