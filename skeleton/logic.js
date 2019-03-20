@@ -1,3 +1,4 @@
+
 // Part 1. Fill in any missing parts of the todoFunction object!
 // you can access these on todo.todoFunctions
 // For part one we expect you to use tdd
@@ -22,10 +23,21 @@ var todoFunctions = {
   },
 
   addTodo: function(todos, newTodo) {
-    return todos.concat(newTodo);
+    // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
+    // returns a new array, it should contain todos with the newTodo added to the end.
+    // add an id to the newTodo. You can use the generateId function to create an id.
+    // hint: array.concat
+    var newTodos = todoFunctions.cloneArrayOfObjects(todos);
+    var newid = todoFunctions.generateId();
+    newTodos.id = newid;
+    return newTodos.concat(newTodo);
   },
   deleteTodo: function(todos, idToDelete) {
-    return todos.filter(function(todo) {
+    // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
+    // return a new array, this should not contain any todo with an id of idToDelete
+    // hint: array.filter
+    var newTodos = todoFunctions.cloneArrayOfObjects(todos);
+    return newTodos.filter(function(todo){
       return todo.id !== idToDelete;
     });
   },
@@ -34,12 +46,37 @@ var todoFunctions = {
     // in the new todo array, all elements will remain unchanged except the one with id: idToMark
     // this element will have its done value toggled
     // hint: array.map
+    var newTodos = todoFunctions.cloneArrayOfObjects(todos);
+    return newTodos.map(function(todo){
+      if (todo.id == idToMark){
+        todo.done = true;
+        return todo;
+      }
+      return todo;
+    });
   },
+
   sortTodos: function(todos, sortFunction) {
     // stretch goal! Do this last
     // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
     // sortFunction will have same signature as the sort function in array.sort
     // hint: array.slice, array.sort
+    var newTodos = todoFunctions.cloneArrayOfObjects(todos);
+
+    doneTodos = newTodos.filter(function(todo){
+      return todo.done == true;
+    });
+    undoneTodos = newTodos.filter(function(todo){
+      return todo.done == false;
+    });
+
+    if(sortFunction === "done"){
+      return doneTodos;
+    }else if(sortFunction === "undone"){
+      return undoneTodos;
+    }else {
+      return newTodos;
+    }
   }
 };
 
