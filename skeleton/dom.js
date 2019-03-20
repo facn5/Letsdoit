@@ -1,6 +1,6 @@
 // part 2 linking it all together
 // var logic = require("./logic");
-function deleteButtonNode() {} // The function here is called an iife,
+//function deleteButtonNode() {} // The function here is called an iife,
 // it keeps everything inside hidden from the rest of our application
 (function() {
   // This is the dom node where we will keep our todo
@@ -19,17 +19,17 @@ function deleteButtonNode() {} // The function here is called an iife,
     // you will need to use addEventListener
     var description = document.createElement("span");
     // add span holding description
-
     // this adds the delete button
     var deleteButtonNode = document.createElement("button");
-
+    var description = document.createElement("span");
     deleteButtonNode.addEventListener("click", function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
     todoNode.appendChild(deleteButtonNode);
+    todoNode.appendChild(description);
 
-    deleteButtonNode.className = "fas fa-trash-alt red";
+    deleteButtonNode.className = "fas fa-trash-alt";
 
     // add markTodo button
     var markTodoButtonNode = document.createElement("button");
@@ -44,11 +44,18 @@ function deleteButtonNode() {} // The function here is called an iife,
       // https://developer.mozilla.org/en-US/docs/Web/Events/submit
 
       // what is inside event.target?
+      event.preventDefault();
+      lettodoObj = {};
+      document.getElementsByTagName("span").innerText = document.getElementById(
+        "text-box"
+      ).value;
 
-      var description = document.getElementById("text-box").value;
-      console.log(description);
+      console.log(document.getElementById("text-box").value);
+      lettodoObj.description = document.getElementById("text-box").value;
+      //var y = (document.getElementsByTagName("span").textContent = x);
+
       // hint: todoFunctions.addTodo
-      var newState = todoFunctions.addTodo(todos, newTodo); // ?? change this!
+      var newState = todoFunctions.addTodo(state, lettodoObj); // ?? change this!
       renderState(newState);
       console.log("this works");
     });
