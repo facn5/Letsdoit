@@ -1,7 +1,7 @@
-var test = require("tape");
-var logic = require("./logic");
+var test = require('tape');
+var logic = require('./logic');
 
-test("the length of addtodo after the add", function(t) {
+test('add todo', function(t) {
   var actual = logic.addTodo(
     [
       { id: -3, description: "first todo", done: false },
@@ -10,13 +10,26 @@ test("the length of addtodo after the add", function(t) {
     ],
     { id: 0, description: "fourth todo", done: false }
   );
-  actual = actual.length;
-  var expected = 4;
-  t.equal(actual, expected, "Should make the first function work");
+  var expected = [
+    { id: -3, description: "first todo", done: false },
+    { id: -2, description: "second todo", done: false },
+    { id: -1, description: "third todo", done: false },
+    { id: 0, description: "fourth todo", done: false }
+  ];
+  t.deepEqual(actual,expected,'to test if todo added');
   t.end();
 });
 
-test("Example test", function(t) {
-  t.pass();
+test('delete todo',function(t){
+  var actual = logic.deleteTodo([
+      { id: -3, description: "first todo", done: false },
+      { id: -2, description: "second todo", done: false },
+      { id: -1, description: "third todo", done: false }
+    ],-1);
+  var expected = [
+    { id: -3, description: "first todo", done: false },
+    { id: -2, description: "second todo", done: false }
+  ];
+  t.deepEqual(actual,expected,'to test if todo deleted');
   t.end();
 });
