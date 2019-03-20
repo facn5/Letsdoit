@@ -1,4 +1,3 @@
-
 // Part 1. Fill in any missing parts of the todoFunction object!
 // you can access these on todo.todoFunctions
 // For part one we expect you to use tdd
@@ -30,6 +29,7 @@ var todoFunctions = {
     var newTodos = todoFunctions.cloneArrayOfObjects(todos);
     var newid = todoFunctions.generateId();
     newTodos.id = newid;
+    newTodos.done = false;
     return newTodos.concat(newTodo);
   },
   deleteTodo: function(todos, idToDelete) {
@@ -37,7 +37,7 @@ var todoFunctions = {
     // return a new array, this should not contain any todo with an id of idToDelete
     // hint: array.filter
     var newTodos = todoFunctions.cloneArrayOfObjects(todos);
-    return newTodos.filter(function(todo){
+    return newTodos.filter(function(todo) {
       return todo.id !== idToDelete;
     });
   },
@@ -47,8 +47,8 @@ var todoFunctions = {
     // this element will have its done value toggled
     // hint: array.map
     var newTodos = todoFunctions.cloneArrayOfObjects(todos);
-    return newTodos.map(function(todo){
-      if (todo.id == idToMark){
+    return newTodos.map(function(todo) {
+      if (todo.id == idToMark) {
         todo.done = true;
         return todo;
       }
@@ -63,18 +63,18 @@ var todoFunctions = {
     // hint: array.slice, array.sort
     var newTodos = todoFunctions.cloneArrayOfObjects(todos);
 
-    doneTodos = newTodos.filter(function(todo){
+    doneTodos = newTodos.filter(function(todo) {
       return todo.done == true;
     });
-    undoneTodos = newTodos.filter(function(todo){
+    undoneTodos = newTodos.filter(function(todo) {
       return todo.done == false;
     });
 
-    if(sortFunction === "done"){
+    if (sortFunction === "done") {
       return doneTodos;
-    }else if(sortFunction === "undone"){
+    } else if (sortFunction === "undone") {
       return undoneTodos;
-    }else {
+    } else {
       return newTodos;
     }
   }
