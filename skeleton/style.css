@@ -13,3 +13,6 @@ form {
 ul {
   display: inline-block;
 }
+todo-container {
+  width: 100%;
+}
