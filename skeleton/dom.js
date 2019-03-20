@@ -1,7 +1,6 @@
 // part 2 linking it all together
 // var logic = require("./logic");
-
-// The function here is called an iife,
+function deleteButtonNode() {} // The function here is called an iife,
 // it keeps everything inside hidden from the rest of our application
 (function() {
   // This is the dom node where we will keep our todo
@@ -23,17 +22,19 @@
 
     // this adds the delete button
     var deleteButtonNode = document.createElement("button");
+
     deleteButtonNode.addEventListener("click", function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
     todoNode.appendChild(deleteButtonNode);
 
+    deleteButtonNode.className = "fas fa-trash-alt red";
+
     // add markTodo button
     var markTodoButtonNode = document.createElement("button");
 
     // add classes for css
-
     return todoNode;
   };
 
