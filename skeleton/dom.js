@@ -48,8 +48,7 @@
       var descValue = document.getElementById("text-box").value;
       document.getElementsByTagName("span").innerText = descValue;
 
-      var newid = todoFunctions.generateId();
-      newState.id = newid;
+     
       newState.description = descValue;
       newState.done = false;
         
