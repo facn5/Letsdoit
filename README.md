@@ -3,7 +3,7 @@ Letsdoit is a simple website where you can add tasks easily, you can mark the ta
 and you can also delete the tasks if you mistakley put one in.
 
 the website is fully functio final and it sorts the tasks
-by the alphabetic order.
+by adding the lastest task that's added to the top.
 
 The website is fully responive for Mobile and Desktop
 [link](https://facn5.github.io/Letsdoit/)
