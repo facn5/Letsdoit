@@ -54,7 +54,8 @@ input[type="text"]:focus {
 }
 
 .marked {
-  background-color: red;
+    text-decoration: line-through;
+    height: 20px;
 }
 
 .switch {
@@ -110,4 +111,9 @@ input:checked + .slider:before {
 
 ul{
 list-style-type: none;
+}
+
+span{
+  color: white;
+  font-size: 20px;
 }
