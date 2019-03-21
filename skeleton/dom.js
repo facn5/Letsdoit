@@ -12,56 +12,52 @@
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
     var todoNode = document.createElement("li");
-    // you will need to use addEventListener
-    var description = document.createElement("span");
-    // add span holding description
-    // this adds the delete button
+    var description = document.createElement("span");    
     var deleteButtonNode = document.createElement("button");
     deleteButtonNode.addEventListener("click", function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
-    todoNode.appendChild(deleteButtonNode);
-    todoNode.appendChild(description);
 
+    var markButtonNode = document.createElement("button");
+    markButtonNode.addEventListener("click",function(event){
+      var newState = todoFunctions.markTodo(state, todo.id);
+      update(newState);
+    });
+    
     deleteButtonNode.className = "fas fa-trash-alt";
+    markButtonNode.className = "fas fa-check";
     description.innerText = todo.description;
 
-    // add markTodo button
-    var markTodoButtonNode = document.createElement("button");
+    if (todo.done){
+      description.className = "marked";
+    }
 
-    // add classes for css
+    todoNode.appendChild(deleteButtonNode);
+    todoNode.appendChild(markButtonNode);    
+    todoNode.appendChild(description);
+
     return todoNode;
   };
 
   // bind create todo form
   if (addTodoForm) {
     addTodoForm.addEventListener("submit", function(event) {
-      // https://developer.mozilla.org/en-US/docs/Web/Events/submit
-
-      // what is inside event.target?
       event.preventDefault();
-      lettodoObj = {};
-      document.getElementsByTagName("span").innerText = document.getElementById(
-        "text-box"
-      ).value;
+      var newState = {};
+      var descValue = document.getElementById("text-box").value;
+      document.getElementsByTagName("span").innerText = descValue;
 
-      console.log(document.getElementById("text-box").value);
       var newid = todoFunctions.generateId();
-      lettodoObj.id = newid;
-      lettodoObj.description = document.getElementById("text-box").value;
-      //var y = (document.getElementsByTagName("span").textContent = x);
-      var newid = todoFunctions.generateId();
-      lettodoObj.id = newid;
-      lettodoObj.done = false;
-
-      // hint: todoFunctions.addTodo
-      state = todoFunctions.addTodo(state, lettodoObj); // ?? change this!
-      renderState(state);
-      console.log("this works");
-      console.log(state);
+      newState.id = newid;
+      newState.description = descValue;
+      newState.done = false;
+        
+      state = todoFunctions.addTodo(state, newState);
+      update(state);
     });
   }
+
 
   // you should not need to change this function
   var update = function(newState) {
