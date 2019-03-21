@@ -60,8 +60,18 @@
 
 
   // you should not need to change this function
+  function sortById(x, y) {
+    var firstKey = x.id;
+    var secKey = y.id;
+    if (firstKey < secKey) return 1;
+    return -1;
+  }
+
+  // you should not need to change this function
   var update = function(newState) {
     state = newState;
+    state = todoFunctions.sortTodos(state, sortById);
+    window.localStorage.myList = JSON.stringify(state);
     renderState(state);
   };
 

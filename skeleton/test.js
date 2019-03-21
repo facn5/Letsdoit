@@ -43,20 +43,15 @@ test('mark todo',function(t){
 });
 
 test('sort done todos',function(t){
-  var actual = logic.sortTodos(state,"done");
+  var actual = logic.sortTodos(state,function(){
+      return state.sort();
+  });
   var expected = [
-    { id: -2, description: "second todo", done: true }
-  ];
-  t.deepEqual(actual,expected,'to sort the todos');
-  t.end();
-});
-
-test('sort undone todos',function(t){
-  var actual = logic.sortTodos(state,"undone");
-  var expected = [
-    { id: -3, description: "first todo", done: false },
-    { id: -1, description: "third todo", done: false }
-  ];
+  { id: -3, description: "first todo", done: false },
+  { id: -2, description: "second todo", done: true },
+  { id: -1, description: "third todo", done: false }
+  
+]; 
   t.deepEqual(actual,expected,'to sort the todos');
   t.end();
 });
