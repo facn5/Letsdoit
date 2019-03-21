@@ -49,7 +49,7 @@ var todoFunctions = {
         todo.done = false;
         return todo;
       }
-      if (todo.id == idToMark) {
+      if (todo.id === idToMark) {
         todo.done = true;
         return todo;
       }
