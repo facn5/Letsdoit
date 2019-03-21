@@ -27,6 +27,8 @@ todo-container {
 input[type="button"],
 input[type="submit"] {
   font-size: 14px;
+    background-color: #4CAF50;
+
   margin: 0 0.5em;
   border-radius: 2em;
   padding: 0.75em 1.5em;
@@ -42,7 +44,6 @@ input[type="submit"] {
   &:hover,
   &:focus {
     color: #fff;
-    background: $color-main;
   }
 }
 input[type="text"] {
