@@ -27,9 +27,6 @@ var todoFunctions = {
     // add an id to the newTodo. You can use the generateId function to create an id.
     // hint: array.concat
     var newTodos = todoFunctions.cloneArrayOfObjects(todos);
-    var newid = todoFunctions.generateId();
-    newTodos.id = newid;
-    newTodos.done = false;
     return newTodos.concat(newTodo);
   },
   deleteTodo: function(todos, idToDelete) {
@@ -48,6 +45,10 @@ var todoFunctions = {
     // hint: array.map
     var newTodos = todoFunctions.cloneArrayOfObjects(todos);
     return newTodos.map(function(todo) {
+      if (todo.id == idToMark && todo.done){
+        todo.done = false;
+        return todo;
+      }
       if (todo.id == idToMark) {
         todo.done = true;
         return todo;
@@ -62,21 +63,8 @@ var todoFunctions = {
     // sortFunction will have same signature as the sort function in array.sort
     // hint: array.slice, array.sort
     var newTodos = todoFunctions.cloneArrayOfObjects(todos);
-
-    doneTodos = newTodos.filter(function(todo) {
-      return todo.done == true;
-    });
-    undoneTodos = newTodos.filter(function(todo) {
-      return todo.done == false;
-    });
-
-    if (sortFunction === "done") {
-      return doneTodos;
-    } else if (sortFunction === "undone") {
-      return undoneTodos;
-    } else {
-      return newTodos;
-    }
+    newTodos.sort(sortFunction);
+    return newTodos;
   }
 };
 
