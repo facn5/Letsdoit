@@ -12,7 +12,7 @@
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
     var todoNode = document.createElement("li");
-    var description = document.createElement("span");    
+    var description = document.createElement("span");
     var deleteButtonNode = document.createElement("button");
     deleteButtonNode.addEventListener("click", function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
@@ -20,21 +20,21 @@
     });
 
     var markButtonNode = document.createElement("button");
-    markButtonNode.addEventListener("click",function(event){
+    markButtonNode.addEventListener("click", function(event) {
       var newState = todoFunctions.markTodo(state, todo.id);
       update(newState);
     });
-    
+
     deleteButtonNode.className = "fas fa-trash-alt";
     markButtonNode.className = "fas fa-check";
     description.innerText = todo.description;
 
-    if (todo.done){
+    if (todo.done) {
       description.className = "marked";
     }
 
     todoNode.appendChild(deleteButtonNode);
-    todoNode.appendChild(markButtonNode);    
+    todoNode.appendChild(markButtonNode);
     todoNode.appendChild(description);
 
     return todoNode;
@@ -47,17 +47,17 @@
       var newState = {};
       var descValue = document.getElementById("text-box").value;
       document.getElementsByTagName("span").innerText = descValue;
- var newid = todoFunctions.generateId();
+      var newid = todoFunctions.generateId();
       newState.id = newid;
-     
+
       newState.description = descValue;
       newState.done = false;
-        
+
       state = todoFunctions.addTodo(state, newState);
       update(state);
+      document.getElementById("text-box").value = "";
     });
   }
-
 
   // you should not need to change this function
   function sortById(x, y) {
